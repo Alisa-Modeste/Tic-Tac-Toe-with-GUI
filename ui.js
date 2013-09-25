@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 
     if (TTT.winner()) {
-      $main.off('click');
+      $main.off('click').after("<div id='overlay'>" + symbol + " wins</div>")
       alert(symbol + " wins");
     }
   })
