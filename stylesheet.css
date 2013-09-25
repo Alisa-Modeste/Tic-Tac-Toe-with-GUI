@@ -9,3 +9,11 @@
 .clear {
   clear: left;
 }
+
+.o{
+  background: red;
+}
+
+.x{
+  background: blue;
+}

@@ -48,6 +48,7 @@
   };
 
   Game.prototype.isEmptyPos = function (pos) {
+    console.log(pos)
     return (this.board[pos[0]][pos[1]] === null);
   };
 
@@ -102,16 +103,16 @@
     }
   };
 
-  Game.prototype.valid = function (pos) {
-    // Check to see if the co-ords are on the board and the spot is
-    // empty.
-
-    function isInRange (pos) {
-      return (0 <= pos) && (pos < 3);
-    }
-
-    return _(pos).all(isInRange) && _.isNull(this.board[pos[0]][pos[1]]);
-  };
+  // Game.prototype.valid = function (pos) {
+  //   // Check to see if the co-ords are on the board and the spot is
+  //   // empty.
+  //
+  //   function isInRange (pos) {
+  //     return (0 <= pos) && (pos < 3);
+  //   }
+  //
+  //   return _(pos).all(isInRange) && _.isNull(this.board[pos[0]][pos[1]]);
+  // };
 
   Game.prototype.verticalWinner = function () {
     var game = this;
@@ -155,25 +156,40 @@
   Game.prototype.run = function () {
     var game = this;
 
-    game.turn(function(){
-      if (game.winner()) {
-        console.log("Someone won!");
-      //  READER.close();
-      } else {
-        game.printBoard();
-        game.run();
-      }
-    });
+   // game.turn(// function(){
+//       if (game.winner()) {
+//         console.log("Someone won!");
+//       //  READER.close();
+//       } else {
+//         game.printBoard();
+//         game.run();
+//       }
+//     });
   }
 
-  Game.prototype.turn = function (callback) {
+  Game.prototype.turn = function (strCoords) {
     var game = this;
 
     // READER.question("Enter coordinates like [row,column]: ",function(strCoords){
-    //   var coords = eval(strCoords); // Totally insecure way to parse the string "[1,2]" into the array [1,2].
+      // console.log(typeof strCoords)
+  //     strCo
+       var coords = [strCoords[0], strCoords[2]]; // Totally insecure way to parse the string "[1,2]" into the array [1,2].
     //   if (game.valid(coords)) {
-    //     game.move(coords);
+
+      console.log(coords)
+
+        game.move(coords);
+
+
+        if (game.winner()) {
+          console.log("Someone won!");
+        }
+
+        return this.player
+
     //     callback();
+
+
     //   } else {
     //     console.log("Invalid coords!");
     //     game.turn(callback);
