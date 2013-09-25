@@ -1,15 +1,6 @@
 // NB: This doesn't include any AI.
 
 (function (root) {
-  // if (!(typeof(require) === "undefined")) {
-  //   _ = require('./underscore.js');
-  // }
-
-  // var readline = require('readline');
- //  var READER = readline.createInterface({
- //    input: process.stdin,
- //    output: process.stdout
- //  });
 
   var TTT = root.TTT = (root.TTT || {});
 
@@ -18,7 +9,7 @@
     this.board = this.makeBoard();
   }
 
-  Game.marks = ["x", "o"];
+  Game.marks = ["X", "O"];
 
   Game.prototype.diagonalWinner = function () {
     var game = this;
@@ -103,17 +94,6 @@
     }
   };
 
-  // Game.prototype.valid = function (pos) {
-  //   // Check to see if the co-ords are on the board and the spot is
-  //   // empty.
-  //
-  //   function isInRange (pos) {
-  //     return (0 <= pos) && (pos < 3);
-  //   }
-  //
-  //   return _(pos).all(isInRange) && _.isNull(this.board[pos[0]][pos[1]]);
-  // };
-
   Game.prototype.verticalWinner = function () {
     var game = this;
 
@@ -141,66 +121,19 @@
     );
   };
 
-  Game.prototype.printBoard = function () {
-    var game = this;
-
-    game.board.forEach(function(row){
-      var first = row[0] == null ? " " : row[0];
-      var second = row[1] == null ? " " : row[1];
-      var third = row[2] == null ? " " : row[2];
-
-      console.log(first + " | " + second + " | " + third);
-    })
-  }
-
-  Game.prototype.run = function () {
-    var game = this;
-
-   // game.turn(// function(){
-//       if (game.winner()) {
-//         console.log("Someone won!");
-//       //  READER.close();
-//       } else {
-//         game.printBoard();
-//         game.run();
-//       }
-//     });
-  }
 
   Game.prototype.turn = function (strCoords) {
     var game = this;
 
-    // READER.question("Enter coordinates like [row,column]: ",function(strCoords){
-      // console.log(typeof strCoords)
-  //     strCo
-       var coords = [strCoords[0], strCoords[2]]; // Totally insecure way to parse the string "[1,2]" into the array [1,2].
-    //   if (game.valid(coords)) {
+    var coords = [strCoords[0], strCoords[2]];
 
-      console.log(coords)
+    game.move(coords);
 
-        game.move(coords);
+    return this.player
 
-
-        if (game.winner()) {
-          console.log("Someone won!");
-        }
-
-        return this.player
-
-    //     callback();
-
-
-    //   } else {
-    //     console.log("Invalid coords!");
-    //     game.turn(callback);
-    //   }
-    // });
   }
 })(this);
 
 
 // First we instantiate a new object with the this.TTT.Game() constructor function.
 var TTT = new this.TTT.Game();
-
-// Then we enter the game's run loop.
-TTT.run();

@@ -4,7 +4,8 @@
   height: 200px;
   border-width: 1px;
   border-style: solid;
-/*  background: blue;*/
+  font-size: 100pt;
+  position: relative;
 }
 .clear {
   clear: left;
@@ -16,4 +17,12 @@
 
 .x{
   background: blue;
+}
+
+.align{
+  position: absolute;
+  top: -110px;
+  left: 55px;
+/*  text-align: center;
+  vertical-align: middle;*/
 }

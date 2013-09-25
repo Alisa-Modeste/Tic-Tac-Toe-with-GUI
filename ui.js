@@ -11,9 +11,20 @@ $(document).ready(function() {
     $main.append("<div class='clear'></div>")
   }
 
+
   $main.on("click", "div.left", function (event){
     var $square = $(event.currentTarget);
     symbol = TTT.turn($square.attr("data-id"))
-    $square.addClass(symbol).off("click")
+    $square.addClass(symbol)
+      .off("click")
+      .html("<p class='align'>" + symbol + "</p>")
+
+
+    if (TTT.winner()) {
+      $main.off('click');
+      alert(symbol + " wins");
+    }
   })
+
+  function endUI() {};
 });
